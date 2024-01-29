@@ -9,13 +9,24 @@ let package = Package(
     products: [
         .library(
             name: "Features",
-            targets: ["Timeline"]),
+            targets: ["Timeline"]
+        )
+    ],
+    dependencies: [
+        .package(path: "../Frameworks"),
+        .package(url: "https://github.com/layoutBox/PinLayout.git", branch: "master")
     ],
     targets: [
         .target(
-            name: "Timeline"),
+            name: "Timeline",
+            dependencies: [
+                "PinLayout", "Frameworks"
+            ],
+            resources: [.copy("Files")]
+        ),
         .testTarget(
             name: "TimelineTests",
-            dependencies: ["Timeline"]),
+            dependencies: ["Timeline"]
+        )
     ]
 )
