@@ -6,21 +6,21 @@
 //
 
 import UIKit
-import ExtensionsKit
 
-public  extension UICollectionView {
+public extension UICollectionView {
     func setMessage(_ message: String) {
-        backgroundView = UILabel {
-            $0.text = message
-            $0.numberOfLines = 0
-            $0.textColor = .label
-            $0.textAlignment = .center
-            
-            $0.sizeToFit()
-        }
+        let label = UILabel()
+        label.text = message
+        label.numberOfLines = 0
+        label.textColor = .label
+        label.textAlignment = .center
+        
+        label.sizeToFit()
+        backgroundView = label
     }
     
     func clearMessage() {
         backgroundView = nil
     }
 }
+
