@@ -12,6 +12,7 @@ public enum BundleLoadingError: Error {
 }
 
 public extension Bundle {
+    // TODO: add unit tests
     func loadFile<T: Decodable>(
         _ name: String,
         ofType ext: String,

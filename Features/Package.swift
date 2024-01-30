@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "Features",
-            targets: ["Timeline"]
+            targets: ["Feed"]
         )
     ],
     dependencies: [
@@ -18,15 +18,15 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Timeline",
+            name: "Feed",
             dependencies: [
                 "PinLayout", "Frameworks"
             ],
             resources: [.copy("Files")]
         ),
         .testTarget(
-            name: "TimelineTests",
-            dependencies: ["Timeline"]
+            name: "FeedTests",
+            dependencies: ["Feed"]
         )
     ]
 )

@@ -7,13 +7,16 @@
 //
 
 import UIKit
-import Timeline
+import Feed
+import CoreModule
 import ExtensionsKit
 
-final class AppFlowCoordinator {
+final class AppFlowCoordinator: Coordinator {
     
     let window: UIWindow
     
+    var childCoordinators = [Coordinator]()
+
     lazy var navigationController = UINavigationController {
         $0.modalTransitionStyle = .crossDissolve
         $0.modalPresentationStyle = .fullScreen
@@ -21,14 +24,15 @@ final class AppFlowCoordinator {
     
     init(window: UIWindow) {
         self.window = window
+        self.window.rootViewController = navigationController
+        self.window.makeKeyAndVisible()
     }
     
-    func start() {
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+    func start(animated: Bool) {
+        let feedFlowCoordinator = FeedFlowCoordinator(navigationController: navigationController)
+        feedFlowCoordinator.start(animated: animated)
         
-        let timelineFlowCoordinator = TimelineFlowCoordinator(rootViewController: navigationController)
-        timelineFlowCoordinator.start()        
+        childCoordinators.append(feedFlowCoordinator)
     }
     
     func dismiss() {

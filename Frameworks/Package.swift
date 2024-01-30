@@ -9,10 +9,15 @@ let package = Package(
     products: [
         .library(
             name: "Frameworks",
-            targets: ["ExtensionsKit"]),
+            targets: ["ExtensionsKit", "CoreModule"]
+        )
     ],
     targets: [
         .target(
-            name: "ExtensionsKit")
+            name: "ExtensionsKit"
+        ),
+        .target(
+            name: "CoreModule"
+        )
     ]
 )

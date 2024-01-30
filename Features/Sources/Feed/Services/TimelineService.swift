@@ -13,8 +13,14 @@ protocol TimelineServiceProtocol {
 }
 
 final class TimelineService: TimelineServiceProtocol {
+    
     func fetchTimeline() async throws -> TimelineModel {
         let file = File.timeline
-        return try Bundle.module.loadFile(file.rawValue, ofType: file.fileType, subdirectory: file.subdirectory)
+        return try Bundle.module.loadFile(
+            file.rawValue,
+            ofType: file.fileType,
+            subdirectory: file.subdirectory,
+            with: JSONDecoder.default
+        )
     }
 }

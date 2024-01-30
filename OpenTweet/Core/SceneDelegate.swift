@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         appFlowCoordinator = AppFlowCoordinator(window: window)
-        appFlowCoordinator?.start()
+        appFlowCoordinator?.start(animated: false)
     }
     
     func application(
